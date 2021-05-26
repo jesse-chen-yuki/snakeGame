@@ -1,6 +1,5 @@
 # a snake game
 
-import math
 import random
 import pygame
 import tkinter as tk
@@ -160,7 +159,7 @@ def redrawWindow(surface):
     pygame.display.update()
 
 
-def randomSnack(rows,item):
+def randomSnack(rows, item):
     positions = item.body
 
     while True:
@@ -176,11 +175,10 @@ def randomSnack(rows,item):
 
 
 def message_box(subject, content):
-
-    root =tk.Tk()
-    root.attributes("-topmost",True)
+    root = tk.Tk()
+    root.attributes("-topmost", True)
     root.withdraw()
-    messagebox.showinfo(subject,content)
+    messagebox.showinfo(subject, content)
     try:
         root.destroy()
     except:
@@ -188,7 +186,7 @@ def message_box(subject, content):
 
 
 def main():
-    global width, rows, s,snack
+    global width, rows, s, snack
     width = 500
     height = 500
     rows = 20
@@ -207,14 +205,13 @@ def main():
             snack = cube(randomSnack(rows, s), color=(0, 255, 0))
 
         for x in range(len(s.body)):
-            if s.body[x].pos in list(map(lambda z:z.pos,s.body[x+1:])):
+            if s.body[x].pos in list(map(lambda z: z.pos, s.body[x + 1:])):
                 print('Score: ', len(s.body))
                 message_box("You Lost! ", 'Play again....')
-                s.reset((10,10))
+                s.reset((10, 10))
                 break
 
         redrawWindow(win)
-
 
     pass
 
